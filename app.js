@@ -72,15 +72,19 @@ main().then(()=>{
 async function main(){
 await mongoose.connect(dbUrl);
 }
+app.get("/", (req, res) => {
+    res.redirect("/listings");
+});
 app.use("/",userRouter);
 app.use("/listings",listingRouter);
 app.use("/listings/:id/reviews",reviewRouter);
-app.listen(process.env.PORT ||8080,(req,res)=>{
-    console.log("Running");
-});
+
 app.use((err,req,res,next)=>{
     let {statusCode=500,message="Something went wrong"}=err;
     res.status(statusCode).render('error.ejs',{message});
+});
+app.listen(process.env.PORT ||8080,(req,res)=>{
+    console.log("Running");
 });
 // app.get('*', (req, res,next) => {
 //   next(new Expresserror(404,"Page Not found"));
