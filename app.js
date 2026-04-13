@@ -72,9 +72,6 @@ main().then(()=>{
 async function main(){
 await mongoose.connect(dbUrl);
 }
-app.get("/", (req, res) => {
-    res.send("hit");
-});
 app.use("/",userRouter);
 app.use("/listings",listingRouter);
 app.use("/listings/:id/reviews",reviewRouter);
