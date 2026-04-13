@@ -73,7 +73,7 @@ async function main(){
 await mongoose.connect(dbUrl);
 }
 app.get("/", (req, res) => {
-    res.redirect("/listings");
+    res.send("hit");
 });
 app.use("/",userRouter);
 app.use("/listings",listingRouter);
