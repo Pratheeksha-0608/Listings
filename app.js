@@ -69,10 +69,6 @@ main().then(()=>{
 .catch((err)=>{
     console.log(err);
 });
-app.use((req, res, next) => {
-    console.log("curruser:", res.locals.curruser);
-    next();
-});
 async function main(){
 await mongoose.connect(dbUrl);
 }
