@@ -79,7 +79,7 @@ await mongoose.connect(dbUrl);
 app.use("/",userRouter);
 app.use("/listings",listingRouter);
 app.use("/listings/:id/reviews",reviewRouter);
-app.listen(8080,(req,res)=>{
+app.listen(process.env.PORT ||8080,(req,res)=>{
     console.log("Running");
 });
 app.use((err,req,res,next)=>{
